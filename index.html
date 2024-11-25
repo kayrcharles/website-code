@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I am a nerd lol</title>
+    <style>
+        /* CSS styling here */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #fef3e8;
+            flex-direction: column;
+        }
+
+        .heart-container, #message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .heart {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: #ff4b5c;
+            transform: rotate(45deg);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ff4b5c;
+        }
+
+        .heart::before {
+            top: -50px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: -50px;
+        }
+
+        .heart:hover {
+            transform: rotate(45deg) scale(1.1);
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: black;
+            text-align: center;
+            display: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="heart-container">
+        <div class="heart" onclick="showMessage()"></div>
+    </div>
+    <p id="message" onclick="showHeart()">I love you so much y Te extraño babe!!</p>
+
+    <script>
+        // Array of messages to display
+        const messages = [
+            "I love you so muchhh",
+            "te extrano mi amorrr",
+            "I can't wait to see you at homeee :)",
+            "You mean so so so much to me <3",
+            "Me preocupo mucho por ti!!",
+            "I hope work is going well, I am so proud of you baby",
+            "Okayyy surprise overrrr, or you can click the heart as much as you want"
+        ];
+        
+        // Counter for tracking which message to show
+        let messageIndex = 0;
+
+        function showMessage() {
+            const message = document.getElementById("message");
+            const heart = document.querySelector(".heart");
+
+            // Show the current message and hide the heart
+            message.textContent = messages[messageIndex];
+            message.style.display = "block";
+            heart.style.display = "none";
+        }
+
+        function showHeart() {
+            const message = document.getElementById("message");
+            const heart = document.querySelector(".heart");
+
+            // Hide the message and show the heart
+            message.style.display = "none";
+            heart.style.display = "block";
+
+            // Move to the next message in the array, or loop back to the first
+            messageIndex = (messageIndex + 1) % messages.length;
+        }
+    </script>
+</body>
+</html>
